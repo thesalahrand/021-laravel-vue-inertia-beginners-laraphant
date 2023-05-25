@@ -1,6 +1,6 @@
 <script setup>
     // import { useForm } from '@inertiajs/vue3';
-    // import { router } from '@inertiajs/vue3';
+    import { router } from '@inertiajs/vue3';
 
     defineProps({
         customers: Object
@@ -12,9 +12,9 @@
     //     phone: null
     // });
 
-    // function submit() {
-    //     router.post('/customers', form);
-    // }
+    function destroy(id) {
+        router.delete(`/customers/${id}`);
+    }
 </script>
 
 <template>
@@ -31,7 +31,7 @@
                     <td>{{ customer.name }}</td>
                     <td>
                         <button class="btn btn-info shadow-none me-2">Edit</button>
-                        <button class="btn btn-danger shadow-none">Delete</button>
+                        <button @click="destroy(customer.id)" class="btn btn-danger shadow-none">Delete</button>
                     </td>
                 </tr>
             </tbody>
