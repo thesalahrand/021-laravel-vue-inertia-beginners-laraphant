@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 /*
@@ -13,6 +14,5 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return inertia::render('create');
-});
+Route::view('/', 'welcome');
+Route::resource('customers', CustomerController::class);
