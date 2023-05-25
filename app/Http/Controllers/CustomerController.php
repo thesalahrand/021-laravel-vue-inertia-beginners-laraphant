@@ -13,7 +13,9 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        echo 'Hio';
+        $customers = Customer::select('id', 'name')->get();
+
+        return inertia()->render('index', compact('customers'));
     }
 
     /**
