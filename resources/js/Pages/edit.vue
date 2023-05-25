@@ -2,18 +2,19 @@
     import { useForm } from '@inertiajs/vue3';
     import { router } from '@inertiajs/vue3';
 
-    defineProps({
-        errors: Object
+    const props = defineProps({
+        errors: Object,
+        customer: Object
     });
 
     const form = useForm({
-        name: null,
-        email: null,
-        phone: null
+        name: props.customer.name,
+        email: props.customer.email,
+        phone: props.customer.phone
     });
 
-    function submit() {
-        router.post('/customers', form);
+    function submit(id) {
+        router.put(`/customers/${id}`, form);
     }
 </script>
 
@@ -23,10 +24,10 @@
             <div class="col-6 mx-auto">
                 <div class="card">
                     <div class="card-header">
-                        Create Customer
+                        Edit Customer
                     </div>
                     <div class="card-body">
-                        <form @submit.prevent="submit" action="">
+                        <form @submit.prevent="submit(customer.id)" action="">
                             <div class="mb-3">
                                 <label class="form-label" for="name">Name</label>
                                 <input type="text" v-model="form.name" class="form-control shadow-none" id="name">
@@ -42,7 +43,7 @@
                                 <input type="tel" v-model="form.phone" class="form-control shadow-none" id="phone">
                                 <span class="text-danger" v-if="errors.phone">{{ errors.phone }}</span>
                             </div>
-                            <button class="btn btn-primary shadow-none w-100" type="submit">Create</button>
+                            <button class="btn btn-primary shadow-none w-100" type="submit">Update</button>
                         </form>
                     </div>
                 </div>

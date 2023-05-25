@@ -12,6 +12,10 @@
     //     phone: null
     // });
 
+    function edit(id) {
+        router.get(`/customers/${id}/edit`);
+    }
+
     function destroy(id) {
         router.delete(`/customers/${id}`);
     }
@@ -30,7 +34,7 @@
                 <tr v-for="customer in customers">
                     <td>{{ customer.name }}</td>
                     <td>
-                        <button class="btn btn-info shadow-none me-2">Edit</button>
+                        <button @click="edit(customer.id)" class="btn btn-info shadow-none me-2">Edit</button>
                         <button @click="destroy(customer.id)" class="btn btn-danger shadow-none">Delete</button>
                     </td>
                 </tr>
