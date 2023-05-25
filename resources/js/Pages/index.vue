@@ -23,6 +23,9 @@
 
 <template>
     <div class="container py-5">
+        <div class="alert alert-success" v-if="$page.props.flash.message">
+            {{ $page.props.flash.message }}
+        </div>
         <table class="table table-bordered">
             <thead>
                 <tr>

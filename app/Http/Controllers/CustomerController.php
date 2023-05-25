@@ -39,15 +39,7 @@ class CustomerController extends Controller
 
         Customer::create($validated);
 
-        return redirect()->route('customers.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-
+        return redirect()->route('customers.index')->with('message', 'Customer created successfully');
     }
 
     /**
@@ -75,7 +67,7 @@ class CustomerController extends Controller
             'phone' => $validated['phone'],
         ]);
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('message', 'Customer updated successfully');
     }
 
     /**
@@ -85,6 +77,6 @@ class CustomerController extends Controller
     {
         $customer->delete();
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('message', 'Customer deleted successfully');
     }
 }

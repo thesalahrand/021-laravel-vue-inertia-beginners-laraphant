@@ -15,4 +15,4 @@ use Inertia\Inertia;
 */
 
 Route::view('/', 'welcome');
-Route::resource('customers', CustomerController::class);
+Route::resource('customers', CustomerController::class)->except('show');
